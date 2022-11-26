@@ -6,11 +6,8 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
-        <link rel="stylesheet" href="css/filter.css">
-<link rel="stylesheet" href="css/nouislider.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         html, body, #map {
@@ -26,7 +23,7 @@
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -35,18 +32,28 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet-search.js"></script>
-        <script src="js/tailDT.js"></script>
-<script src="js/nouislider.min.js"></script>
-<script src="js/wNumb.js"></script>
-        <script src="data/VULNERABLEROADS_2.js"></script>
+        <script src="data/TRIVANDRUM_2.js"></script>
+        <script src="data/WAYANAD_3.js"></script>
+        <script src="data/PALAKKAD_4.js"></script>
+        <script src="data/THRISSUR_5.js"></script>
+        <script src="data/MALAPPURAM_6.js"></script>
+        <script src="data/KOZHIKODE_7.js"></script>
+        <script src="data/KOTTAYAM_8.js"></script>
+        <script src="data/KOLLAM_9.js"></script>
+        <script src="data/KASARAGODE_10.js"></script>
+        <script src="data/KANNUR_11.js"></script>
+        <script src="data/PATHANAMTHITTA_12.js"></script>
+        <script src="data/IDUKKI_13.js"></script>
+        <script src="data/ERANAKULAM_14.js"></script>
+        <script src="data/ALAPPUZHA_15.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[8.349283742519177,76.47172762380755],[8.784963392519174,77.35110556767258]]);
+        }).fitBounds([[9.672364301846784,73.48585267591193],[12.363634526845573,78.891508330296]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
@@ -88,8 +95,11 @@
         });
         layer_OpenStreetMap_1;
         map.addLayer(layer_OpenStreetMap_1);
-        function pop_VULNERABLEROADS_2(feature, layer) {
+        function pop_TRIVANDRUM_2(feature, layer) {
             var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
                     <tr>\
                         <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -136,11 +146,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_VULNERABLEROADS_2_0(feature) {
+        function style_TRIVANDRUM_2_0(feature) {
             switch(String(feature.properties['GRADING'])) {
                 case 'HIGH RISK':
                     return {
-                pane: 'pane_VULNERABLEROADS_2',
+                pane: 'pane_TRIVANDRUM_2',
                 opacity: 1,
                 color: 'rgba(243,13,47,1.0)',
                 dashArray: '',
@@ -153,7 +163,7 @@
                     break;
                 case 'LOW RISK':
                     return {
-                pane: 'pane_VULNERABLEROADS_2',
+                pane: 'pane_TRIVANDRUM_2',
                 opacity: 1,
                 color: 'rgba(253,221,7,1.0)',
                 dashArray: '',
@@ -166,7 +176,7 @@
                     break;
                 case 'MODERATE RISK':
                     return {
-                pane: 'pane_VULNERABLEROADS_2',
+                pane: 'pane_TRIVANDRUM_2',
                 opacity: 1,
                 color: 'rgba(253,151,7,1.0)',
                 dashArray: '',
@@ -179,7 +189,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_VULNERABLEROADS_2',
+                pane: 'pane_TRIVANDRUM_2',
                 opacity: 1,
                 color: 'rgba(83,202,204,1.0)',
                 dashArray: '',
@@ -192,345 +202,1608 @@
                     break;
             }
         }
-        map.createPane('pane_VULNERABLEROADS_2');
-        map.getPane('pane_VULNERABLEROADS_2').style.zIndex = 402;
-        map.getPane('pane_VULNERABLEROADS_2').style['mix-blend-mode'] = 'normal';
-        var layer_VULNERABLEROADS_2 = new L.geoJson(json_VULNERABLEROADS_2, {
+        map.createPane('pane_TRIVANDRUM_2');
+        map.getPane('pane_TRIVANDRUM_2').style.zIndex = 402;
+        map.getPane('pane_TRIVANDRUM_2').style['mix-blend-mode'] = 'normal';
+        var layer_TRIVANDRUM_2 = new L.geoJson(json_TRIVANDRUM_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_VULNERABLEROADS_2',
-            layerName: 'layer_VULNERABLEROADS_2',
-            pane: 'pane_VULNERABLEROADS_2',
-            onEachFeature: pop_VULNERABLEROADS_2,
-            style: style_VULNERABLEROADS_2_0,
+            dataVar: 'json_TRIVANDRUM_2',
+            layerName: 'layer_TRIVANDRUM_2',
+            pane: 'pane_TRIVANDRUM_2',
+            onEachFeature: pop_TRIVANDRUM_2,
+            style: style_TRIVANDRUM_2_0,
         });
-        bounds_group.addLayer(layer_VULNERABLEROADS_2);
-        map.addLayer(layer_VULNERABLEROADS_2);
-        var baseMaps = {};
-        L.control.layers(baseMaps,{'VULNERABLE ROADS<br /><table><tr><td style="text-align: center;"><img src="legend/VULNERABLEROADS_2_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/VULNERABLEROADS_2_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/VULNERABLEROADS_2_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/VULNERABLEROADS_2_3.png" /></td><td></td></tr></table>': layer_VULNERABLEROADS_2,"OpenStreetMap": layer_OpenStreetMap_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
-        setBounds();
-        map.addControl(new L.Control.Search({
-            layer: layer_VULNERABLEROADS_2,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: 'Place_name'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
-        var mapDiv = document.getElementById('map');
-        var row = document.createElement('div');
-        row.className="row";
-        row.id="all";
-        row.style.height = "100%";
-        var col1 = document.createElement('div');
-        col1.className="col9";
-        col1.id = "mapWindow";
-        col1.style.height = "99%";
-        col1.style.width = "80%";
-        col1.style.display = "inline-block";
-        var col2 = document.createElement('div');
-        col2.className="col3";
-        col2.id = "menu";
-        col2.style.display = "inline-block";
-        mapDiv.parentNode.insertBefore(row, mapDiv);
-        document.getElementById("all").appendChild(col1);
-        document.getElementById("all").appendChild(col2);
-        col1.appendChild(mapDiv)
-        var Filters = {"Nos of Fat": "str","No_ of Acc": "str","Total Inju": "str"};
-        function filterFunc() {
-          map.eachLayer(function(lyr){
-          if ("options" in lyr && "dataVar" in lyr["options"]){
-            features = this[lyr["options"]["dataVar"]].features.slice(0);
-            try{
-              for (key in Filters){
-                keyS = key.replace(/[^a-zA-Z0-9_]/g, "")
-                if (Filters[key] == "str" || Filters[key] == "bool"){
-                  var selection = [];
-                  var options = document.getElementById("sel_" + keyS).options
-                  for (var i=0; i < options.length; i++) {
-                    if (options[i].selected) selection.push(options[i].value);
-                  }
-                    try{
-                      if (key in features[0].properties){
-                        for (i = features.length - 1;
-                          i >= 0; --i){
-                          if (selection.indexOf(
-                          features[i].properties[key])<0
-                          && selection.length>0) {
-                          features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                  }
-                }
-                if (Filters[key] == "int"){
-                  sliderVals =  document.getElementById(
-                    "div_" + keyS).noUiSlider.get();
-                  try{
-                    if (key in features[0].properties){
-                    for (i = features.length - 1; i >= 0; --i){
-                      if (parseInt(features[i].properties[key])
-                          < sliderVals[0]
-                          || parseInt(features[i].properties[key])
-                          > sliderVals[1]){
-                            features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                    }
-                  }
-                if (Filters[key] == "real"){
-                  sliderVals =  document.getElementById(
-                    "div_" + keyS).noUiSlider.get();
-                  try{
-                    if (key in features[0].properties){
-                    for (i = features.length - 1; i >= 0; --i){
-                      if (features[i].properties[key]
-                          < sliderVals[0]
-                          || features[i].properties[key]
-                          > sliderVals[1]){
-                            features.splice(i,1);
-                          }
-                        }
-                      }
-                    } catch(err){
-                    }
-                  }
-                if (Filters[key] == "date"
-                  || Filters[key] == "datetime"
-                  || Filters[key] == "time"){
-                  try{
-                    if (key in features[0].properties){
-                      HTMLkey = key.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g, '');
-                      startdate = document.getElementById("dat_" +
-                        HTMLkey + "_date1").value.replace(" ", "T");
-                      enddate = document.getElementById("dat_" +
-                        HTMLkey + "_date2").value.replace(" ", "T");
-                      for (i = features.length - 1; i >= 0; --i){
-                        if (features[i].properties[key] < startdate
-                          || features[i].properties[key] > enddate){
-                          features.splice(i,1);
-                        }
-                      }
-                    }
-                  } catch(err){
-                  }
-                }
-              }
-            } catch(err){
-            }
-          this[lyr["options"]["layerName"]].clearLayers();
-          this[lyr["options"]["layerName"]].addData(features);
-          }
-          })
+        bounds_group.addLayer(layer_TRIVANDRUM_2);
+        map.addLayer(layer_TRIVANDRUM_2);
+        function pop_WAYANAD_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_NosofFat = document.createElement('div');
-            div_NosofFat.id = "div_NosofFat";
-            div_NosofFat.className= "filterselect";
-            document.getElementById("menu").appendChild(div_NosofFat);
-            sel_NosofFat = document.createElement('select');
-            sel_NosofFat.multiple = true;
-            sel_NosofFat.size = 10;
-            sel_NosofFat.id = "sel_NosofFat";
-            var NosofFat_options_str = "<option value='' unselected></option>";
-            sel_NosofFat.onchange = function(){filterFunc()};
-            NosofFat_options_str  += '<option value="NULL">NULL</option>';
-            NosofFat_options_str  += '<option value="0">0</option>';
-            NosofFat_options_str  += '<option value="1">1</option>';
-            NosofFat_options_str  += '<option value="10">10</option>';
-            NosofFat_options_str  += '<option value="11">11</option>';
-            NosofFat_options_str  += '<option value="13">13</option>';
-            NosofFat_options_str  += '<option value="15">15</option>';
-            NosofFat_options_str  += '<option value="2">2</option>';
-            NosofFat_options_str  += '<option value="3">3</option>';
-            NosofFat_options_str  += '<option value="4">4</option>';
-            NosofFat_options_str  += '<option value="5">5</option>';
-            NosofFat_options_str  += '<option value="6">6</option>';
-            NosofFat_options_str  += '<option value="7">7</option>';
-            NosofFat_options_str  += '<option value="8">8</option>';
-            NosofFat_options_str  += '<option value="9">9</option>';
-            sel_NosofFat.innerHTML = NosofFat_options_str;
-            div_NosofFat.appendChild(sel_NosofFat);
-            var lab_NosofFat = document.createElement('div');
-            lab_NosofFat.innerHTML = 'Nos of Fat';
-            lab_NosofFat.className = 'filterlabel';
-            div_NosofFat.appendChild(lab_NosofFat);
-            var reset_NosofFat = document.createElement('div');
-            reset_NosofFat.innerHTML = 'clear filter';
-            reset_NosofFat.className = 'filterlabel';
-            reset_NosofFat.onclick = function() {
-                var options = document.getElementById("sel_NosofFat").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_NosofFat.appendChild(reset_NosofFat);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_No_ofAcc = document.createElement('div');
-            div_No_ofAcc.id = "div_No_ofAcc";
-            div_No_ofAcc.className= "filterselect";
-            document.getElementById("menu").appendChild(div_No_ofAcc);
-            sel_No_ofAcc = document.createElement('select');
-            sel_No_ofAcc.multiple = true;
-            sel_No_ofAcc.size = 10;
-            sel_No_ofAcc.id = "sel_No_ofAcc";
-            var No_ofAcc_options_str = "<option value='' unselected></option>";
-            sel_No_ofAcc.onchange = function(){filterFunc()};
-            No_ofAcc_options_str  += '<option value="NULL">NULL</option>';
-            No_ofAcc_options_str  += '<option value="10">10</option>';
-            No_ofAcc_options_str  += '<option value="11">11</option>';
-            No_ofAcc_options_str  += '<option value="12">12</option>';
-            No_ofAcc_options_str  += '<option value="13">13</option>';
-            No_ofAcc_options_str  += '<option value="14">14</option>';
-            No_ofAcc_options_str  += '<option value="15">15</option>';
-            No_ofAcc_options_str  += '<option value="16">16</option>';
-            No_ofAcc_options_str  += '<option value="17">17</option>';
-            No_ofAcc_options_str  += '<option value="18">18</option>';
-            No_ofAcc_options_str  += '<option value="19">19</option>';
-            No_ofAcc_options_str  += '<option value="20">20</option>';
-            No_ofAcc_options_str  += '<option value="21">21</option>';
-            No_ofAcc_options_str  += '<option value="22">22</option>';
-            No_ofAcc_options_str  += '<option value="23">23</option>';
-            No_ofAcc_options_str  += '<option value="24">24</option>';
-            No_ofAcc_options_str  += '<option value="25">25</option>';
-            No_ofAcc_options_str  += '<option value="26">26</option>';
-            No_ofAcc_options_str  += '<option value="27">27</option>';
-            No_ofAcc_options_str  += '<option value="28">28</option>';
-            No_ofAcc_options_str  += '<option value="29">29</option>';
-            No_ofAcc_options_str  += '<option value="3">3</option>';
-            No_ofAcc_options_str  += '<option value="30">30</option>';
-            No_ofAcc_options_str  += '<option value="31">31</option>';
-            No_ofAcc_options_str  += '<option value="32">32</option>';
-            No_ofAcc_options_str  += '<option value="33">33</option>';
-            No_ofAcc_options_str  += '<option value="34">34</option>';
-            No_ofAcc_options_str  += '<option value="35">35</option>';
-            No_ofAcc_options_str  += '<option value="36">36</option>';
-            No_ofAcc_options_str  += '<option value="37">37</option>';
-            No_ofAcc_options_str  += '<option value="38">38</option>';
-            No_ofAcc_options_str  += '<option value="39">39</option>';
-            No_ofAcc_options_str  += '<option value="4">4</option>';
-            No_ofAcc_options_str  += '<option value="41">41</option>';
-            No_ofAcc_options_str  += '<option value="42">42</option>';
-            No_ofAcc_options_str  += '<option value="45">45</option>';
-            No_ofAcc_options_str  += '<option value="5">5</option>';
-            No_ofAcc_options_str  += '<option value="50">50</option>';
-            No_ofAcc_options_str  += '<option value="51">51</option>';
-            No_ofAcc_options_str  += '<option value="52">52</option>';
-            No_ofAcc_options_str  += '<option value="54">54</option>';
-            No_ofAcc_options_str  += '<option value="55">55</option>';
-            No_ofAcc_options_str  += '<option value="56">56</option>';
-            No_ofAcc_options_str  += '<option value="6">6</option>';
-            No_ofAcc_options_str  += '<option value="60">60</option>';
-            No_ofAcc_options_str  += '<option value="65">65</option>';
-            No_ofAcc_options_str  += '<option value="7">7</option>';
-            No_ofAcc_options_str  += '<option value="8">8</option>';
-            No_ofAcc_options_str  += '<option value="9">9</option>';
-            sel_No_ofAcc.innerHTML = No_ofAcc_options_str;
-            div_No_ofAcc.appendChild(sel_No_ofAcc);
-            var lab_No_ofAcc = document.createElement('div');
-            lab_No_ofAcc.innerHTML = 'No_ of Acc';
-            lab_No_ofAcc.className = 'filterlabel';
-            div_No_ofAcc.appendChild(lab_No_ofAcc);
-            var reset_No_ofAcc = document.createElement('div');
-            reset_No_ofAcc.innerHTML = 'clear filter';
-            reset_No_ofAcc.className = 'filterlabel';
-            reset_No_ofAcc.onclick = function() {
-                var options = document.getElementById("sel_No_ofAcc").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_No_ofAcc.appendChild(reset_No_ofAcc);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_TotalInju = document.createElement('div');
-            div_TotalInju.id = "div_TotalInju";
-            div_TotalInju.className= "filterselect";
-            document.getElementById("menu").appendChild(div_TotalInju);
-            sel_TotalInju = document.createElement('select');
-            sel_TotalInju.multiple = true;
-            sel_TotalInju.size = 10;
-            sel_TotalInju.id = "sel_TotalInju";
-            var TotalInju_options_str = "<option value='' unselected></option>";
-            sel_TotalInju.onchange = function(){filterFunc()};
-            TotalInju_options_str  += '<option value="NULL">NULL</option>';
-            TotalInju_options_str  += '<option value="0">0</option>';
-            TotalInju_options_str  += '<option value="1">1</option>';
-            TotalInju_options_str  += '<option value="10">10</option>';
-            TotalInju_options_str  += '<option value="11">11</option>';
-            TotalInju_options_str  += '<option value="12">12</option>';
-            TotalInju_options_str  += '<option value="13">13</option>';
-            TotalInju_options_str  += '<option value="14">14</option>';
-            TotalInju_options_str  += '<option value="15">15</option>';
-            TotalInju_options_str  += '<option value="16">16</option>';
-            TotalInju_options_str  += '<option value="17">17</option>';
-            TotalInju_options_str  += '<option value="18">18</option>';
-            TotalInju_options_str  += '<option value="19">19</option>';
-            TotalInju_options_str  += '<option value="2">2</option>';
-            TotalInju_options_str  += '<option value="20">20</option>';
-            TotalInju_options_str  += '<option value="21">21</option>';
-            TotalInju_options_str  += '<option value="22">22</option>';
-            TotalInju_options_str  += '<option value="23">23</option>';
-            TotalInju_options_str  += '<option value="24">24</option>';
-            TotalInju_options_str  += '<option value="25">25</option>';
-            TotalInju_options_str  += '<option value="26">26</option>';
-            TotalInju_options_str  += '<option value="27">27</option>';
-            TotalInju_options_str  += '<option value="28">28</option>';
-            TotalInju_options_str  += '<option value="29">29</option>';
-            TotalInju_options_str  += '<option value="3">3</option>';
-            TotalInju_options_str  += '<option value="30">30</option>';
-            TotalInju_options_str  += '<option value="31">31</option>';
-            TotalInju_options_str  += '<option value="32">32</option>';
-            TotalInju_options_str  += '<option value="33">33</option>';
-            TotalInju_options_str  += '<option value="34">34</option>';
-            TotalInju_options_str  += '<option value="35">35</option>';
-            TotalInju_options_str  += '<option value="36">36</option>';
-            TotalInju_options_str  += '<option value="37">37</option>';
-            TotalInju_options_str  += '<option value="38">38</option>';
-            TotalInju_options_str  += '<option value="39">39</option>';
-            TotalInju_options_str  += '<option value="4">4</option>';
-            TotalInju_options_str  += '<option value="40">40</option>';
-            TotalInju_options_str  += '<option value="41">41</option>';
-            TotalInju_options_str  += '<option value="42">42</option>';
-            TotalInju_options_str  += '<option value="44">44</option>';
-            TotalInju_options_str  += '<option value="45">45</option>';
-            TotalInju_options_str  += '<option value="48">48</option>';
-            TotalInju_options_str  += '<option value="49">49</option>';
-            TotalInju_options_str  += '<option value="5">5</option>';
-            TotalInju_options_str  += '<option value="51">51</option>';
-            TotalInju_options_str  += '<option value="52">52</option>';
-            TotalInju_options_str  += '<option value="54">54</option>';
-            TotalInju_options_str  += '<option value="58">58</option>';
-            TotalInju_options_str  += '<option value="6">6</option>';
-            TotalInju_options_str  += '<option value="60">60</option>';
-            TotalInju_options_str  += '<option value="62">62</option>';
-            TotalInju_options_str  += '<option value="7">7</option>';
-            TotalInju_options_str  += '<option value="73">73</option>';
-            TotalInju_options_str  += '<option value="8">8</option>';
-            TotalInju_options_str  += '<option value="9">9</option>';
-            sel_TotalInju.innerHTML = TotalInju_options_str;
-            div_TotalInju.appendChild(sel_TotalInju);
-            var lab_TotalInju = document.createElement('div');
-            lab_TotalInju.innerHTML = 'Total Inju';
-            lab_TotalInju.className = 'filterlabel';
-            div_TotalInju.appendChild(lab_TotalInju);
-            var reset_TotalInju = document.createElement('div');
-            reset_TotalInju.innerHTML = 'clear filter';
-            reset_TotalInju.className = 'filterlabel';
-            reset_TotalInju.onclick = function() {
-                var options = document.getElementById("sel_TotalInju").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_TotalInju.appendChild(reset_TotalInju);
+
+        function style_WAYANAD_3_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_WAYANAD_3',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_WAYANAD_3',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_WAYANAD_3',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_WAYANAD_3',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_WAYANAD_3');
+        map.getPane('pane_WAYANAD_3').style.zIndex = 403;
+        map.getPane('pane_WAYANAD_3').style['mix-blend-mode'] = 'normal';
+        var layer_WAYANAD_3 = new L.geoJson(json_WAYANAD_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_WAYANAD_3',
+            layerName: 'layer_WAYANAD_3',
+            pane: 'pane_WAYANAD_3',
+            onEachFeature: pop_WAYANAD_3,
+            style: style_WAYANAD_3_0,
+        });
+        bounds_group.addLayer(layer_WAYANAD_3);
+        map.addLayer(layer_WAYANAD_3);
+        function pop_PALAKKAD_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PALAKKAD_4_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_PALAKKAD_4',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_PALAKKAD_4',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_PALAKKAD_4',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_PALAKKAD_4',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PALAKKAD_4');
+        map.getPane('pane_PALAKKAD_4').style.zIndex = 404;
+        map.getPane('pane_PALAKKAD_4').style['mix-blend-mode'] = 'normal';
+        var layer_PALAKKAD_4 = new L.geoJson(json_PALAKKAD_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PALAKKAD_4',
+            layerName: 'layer_PALAKKAD_4',
+            pane: 'pane_PALAKKAD_4',
+            onEachFeature: pop_PALAKKAD_4,
+            style: style_PALAKKAD_4_0,
+        });
+        bounds_group.addLayer(layer_PALAKKAD_4);
+        map.addLayer(layer_PALAKKAD_4);
+        function pop_THRISSUR_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_THRISSUR_5_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                default:
+                    return {
+                pane: 'pane_THRISSUR_5',
+                opacity: 1,
+                color: 'rgba(167,117,210,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'High Risk':
+                    return {
+                pane: 'pane_THRISSUR_5',
+                opacity: 1,
+                color: 'rgba(255,3,53,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Low Risk':
+                    return {
+                pane: 'pane_THRISSUR_5',
+                opacity: 1,
+                color: 'rgba(255,235,9,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Medium Risk':
+                    return {
+                pane: 'pane_THRISSUR_5',
+                opacity: 1,
+                color: 'rgba(248,171,5,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_THRISSUR_5');
+        map.getPane('pane_THRISSUR_5').style.zIndex = 405;
+        map.getPane('pane_THRISSUR_5').style['mix-blend-mode'] = 'normal';
+        var layer_THRISSUR_5 = new L.geoJson(json_THRISSUR_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_THRISSUR_5',
+            layerName: 'layer_THRISSUR_5',
+            pane: 'pane_THRISSUR_5',
+            onEachFeature: pop_THRISSUR_5,
+            style: style_THRISSUR_5_0,
+        });
+        bounds_group.addLayer(layer_THRISSUR_5);
+        map.addLayer(layer_THRISSUR_5);
+        function pop_MALAPPURAM_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MALAPPURAM_6_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_MALAPPURAM_6',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_MALAPPURAM_6',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_MALAPPURAM_6',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_MALAPPURAM_6',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_MALAPPURAM_6');
+        map.getPane('pane_MALAPPURAM_6').style.zIndex = 406;
+        map.getPane('pane_MALAPPURAM_6').style['mix-blend-mode'] = 'normal';
+        var layer_MALAPPURAM_6 = new L.geoJson(json_MALAPPURAM_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_MALAPPURAM_6',
+            layerName: 'layer_MALAPPURAM_6',
+            pane: 'pane_MALAPPURAM_6',
+            onEachFeature: pop_MALAPPURAM_6,
+            style: style_MALAPPURAM_6_0,
+        });
+        bounds_group.addLayer(layer_MALAPPURAM_6);
+        map.addLayer(layer_MALAPPURAM_6);
+        function pop_KOZHIKODE_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KOZHIKODE_7_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_KOZHIKODE_7',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_KOZHIKODE_7',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_KOZHIKODE_7',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_KOZHIKODE_7',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_KOZHIKODE_7');
+        map.getPane('pane_KOZHIKODE_7').style.zIndex = 407;
+        map.getPane('pane_KOZHIKODE_7').style['mix-blend-mode'] = 'normal';
+        var layer_KOZHIKODE_7 = new L.geoJson(json_KOZHIKODE_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KOZHIKODE_7',
+            layerName: 'layer_KOZHIKODE_7',
+            pane: 'pane_KOZHIKODE_7',
+            onEachFeature: pop_KOZHIKODE_7,
+            style: style_KOZHIKODE_7_0,
+        });
+        bounds_group.addLayer(layer_KOZHIKODE_7);
+        map.addLayer(layer_KOZHIKODE_7);
+        function pop_KOTTAYAM_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KOTTAYAM_8_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_KOTTAYAM_8',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_KOTTAYAM_8',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_KOTTAYAM_8',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_KOTTAYAM_8',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_KOTTAYAM_8');
+        map.getPane('pane_KOTTAYAM_8').style.zIndex = 408;
+        map.getPane('pane_KOTTAYAM_8').style['mix-blend-mode'] = 'normal';
+        var layer_KOTTAYAM_8 = new L.geoJson(json_KOTTAYAM_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KOTTAYAM_8',
+            layerName: 'layer_KOTTAYAM_8',
+            pane: 'pane_KOTTAYAM_8',
+            onEachFeature: pop_KOTTAYAM_8,
+            style: style_KOTTAYAM_8_0,
+        });
+        bounds_group.addLayer(layer_KOTTAYAM_8);
+        map.addLayer(layer_KOTTAYAM_8);
+        function pop_KOLLAM_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Place_name</strong><br />' + (feature.properties['Place_name'] !== null ? autolinker.link(feature.properties['Place_name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Autority/T</strong><br />' + (feature.properties['Autority/T'] !== null ? autolinker.link(feature.properties['Autority/T'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH (m)</strong><br />' + (feature.properties['LENGTH (m)'] !== null ? autolinker.link(feature.properties['LENGTH (m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LONG</strong><br />' + (feature.properties['ST_LONG'] !== null ? autolinker.link(feature.properties['ST_LONG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>EN_LAT</strong><br />' + (feature.properties['EN_LAT'] !== null ? autolinker.link(feature.properties['EN_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>EN_LONG</strong><br />' + (feature.properties['EN_LONG'] !== null ? autolinker.link(feature.properties['EN_LONG'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>No_ of Acc</strong><br />' + (feature.properties['No_ of Acc'] !== null ? autolinker.link(feature.properties['No_ of Acc'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Nos of Fat</strong><br />' + (feature.properties['Nos of Fat'] !== null ? autolinker.link(feature.properties['Nos of Fat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Total Inju</strong><br />' + (feature.properties['Total Inju'] !== null ? autolinker.link(feature.properties['Total Inju'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KOLLAM_9_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_KOLLAM_9',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_KOLLAM_9',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_KOLLAM_9',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_KOLLAM_9',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_KOLLAM_9');
+        map.getPane('pane_KOLLAM_9').style.zIndex = 409;
+        map.getPane('pane_KOLLAM_9').style['mix-blend-mode'] = 'normal';
+        var layer_KOLLAM_9 = new L.geoJson(json_KOLLAM_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KOLLAM_9',
+            layerName: 'layer_KOLLAM_9',
+            pane: 'pane_KOLLAM_9',
+            onEachFeature: pop_KOLLAM_9,
+            style: style_KOLLAM_9_0,
+        });
+        bounds_group.addLayer(layer_KOLLAM_9);
+        map.addLayer(layer_KOLLAM_9);
+        function pop_KASARAGODE_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KASARAGODE_10_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_KASARAGODE_10',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_KASARAGODE_10',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_KASARAGODE_10',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_KASARAGODE_10',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_KASARAGODE_10');
+        map.getPane('pane_KASARAGODE_10').style.zIndex = 410;
+        map.getPane('pane_KASARAGODE_10').style['mix-blend-mode'] = 'normal';
+        var layer_KASARAGODE_10 = new L.geoJson(json_KASARAGODE_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KASARAGODE_10',
+            layerName: 'layer_KASARAGODE_10',
+            pane: 'pane_KASARAGODE_10',
+            onEachFeature: pop_KASARAGODE_10,
+            style: style_KASARAGODE_10_0,
+        });
+        bounds_group.addLayer(layer_KASARAGODE_10);
+        map.addLayer(layer_KASARAGODE_10);
+        function pop_KANNUR_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_KANNUR_11_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_KANNUR_11',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_KANNUR_11',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_KANNUR_11',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_KANNUR_11',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_KANNUR_11');
+        map.getPane('pane_KANNUR_11').style.zIndex = 411;
+        map.getPane('pane_KANNUR_11').style['mix-blend-mode'] = 'normal';
+        var layer_KANNUR_11 = new L.geoJson(json_KANNUR_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_KANNUR_11',
+            layerName: 'layer_KANNUR_11',
+            pane: 'pane_KANNUR_11',
+            onEachFeature: pop_KANNUR_11,
+            style: style_KANNUR_11_0,
+        });
+        bounds_group.addLayer(layer_KANNUR_11);
+        map.addLayer(layer_KANNUR_11);
+        function pop_PATHANAMTHITTA_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PATHANAMTHITTA_12_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_PATHANAMTHITTA_12',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_PATHANAMTHITTA_12',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_PATHANAMTHITTA_12',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_PATHANAMTHITTA_12',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PATHANAMTHITTA_12');
+        map.getPane('pane_PATHANAMTHITTA_12').style.zIndex = 412;
+        map.getPane('pane_PATHANAMTHITTA_12').style['mix-blend-mode'] = 'normal';
+        var layer_PATHANAMTHITTA_12 = new L.geoJson(json_PATHANAMTHITTA_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PATHANAMTHITTA_12',
+            layerName: 'layer_PATHANAMTHITTA_12',
+            pane: 'pane_PATHANAMTHITTA_12',
+            onEachFeature: pop_PATHANAMTHITTA_12,
+            style: style_PATHANAMTHITTA_12_0,
+        });
+        bounds_group.addLayer(layer_PATHANAMTHITTA_12);
+        map.addLayer(layer_PATHANAMTHITTA_12);
+        function pop_IDUKKI_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Authority</strong><br />' + (feature.properties['Authority'] !== null ? autolinker.link(feature.properties['Authority'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_IDUKKI_13_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_IDUKKI_13',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_IDUKKI_13',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_IDUKKI_13',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_IDUKKI_13',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_IDUKKI_13');
+        map.getPane('pane_IDUKKI_13').style.zIndex = 413;
+        map.getPane('pane_IDUKKI_13').style['mix-blend-mode'] = 'normal';
+        var layer_IDUKKI_13 = new L.geoJson(json_IDUKKI_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_IDUKKI_13',
+            layerName: 'layer_IDUKKI_13',
+            pane: 'pane_IDUKKI_13',
+            onEachFeature: pop_IDUKKI_13,
+            style: style_IDUKKI_13_0,
+        });
+        bounds_group.addLayer(layer_IDUKKI_13);
+        map.addLayer(layer_IDUKKI_13);
+        function pop_ERANAKULAM_14(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ERANAKULAM_14_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_ERANAKULAM_14',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_ERANAKULAM_14',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_ERANAKULAM_14',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_ERANAKULAM_14',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ERANAKULAM_14');
+        map.getPane('pane_ERANAKULAM_14').style.zIndex = 414;
+        map.getPane('pane_ERANAKULAM_14').style['mix-blend-mode'] = 'normal';
+        var layer_ERANAKULAM_14 = new L.geoJson(json_ERANAKULAM_14, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ERANAKULAM_14',
+            layerName: 'layer_ERANAKULAM_14',
+            pane: 'pane_ERANAKULAM_14',
+            onEachFeature: pop_ERANAKULAM_14,
+            style: style_ERANAKULAM_14_0,
+        });
+        bounds_group.addLayer(layer_ERANAKULAM_14);
+        map.addLayer(layer_ERANAKULAM_14);
+        function pop_ALAPPUZHA_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>ID</strong><br />' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_NAME</strong><br />' + (feature.properties['ROAD_NAME'] !== null ? autolinker.link(feature.properties['ROAD_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>PLACE_NAME</strong><br />' + (feature.properties['PLACE_NAME'] !== null ? autolinker.link(feature.properties['PLACE_NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>GRADING</strong><br />' + (feature.properties['GRADING'] !== null ? autolinker.link(feature.properties['GRADING'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ROAD_TYPE</strong><br />' + (feature.properties['ROAD_TYPE'] !== null ? autolinker.link(feature.properties['ROAD_TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>LENGTH(m)</strong><br />' + (feature.properties['LENGTH(m)'] !== null ? autolinker.link(feature.properties['LENGTH(m)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>START_LM</strong><br />' + (feature.properties['START_LM'] !== null ? autolinker.link(feature.properties['START_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LAT</strong><br />' + (feature.properties['ST_LAT'] !== null ? autolinker.link(feature.properties['ST_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ST_LON</strong><br />' + (feature.properties['ST_LON'] !== null ? autolinker.link(feature.properties['ST_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LM</strong><br />' + (feature.properties['END_LM'] !== null ? autolinker.link(feature.properties['END_LM'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LAT</strong><br />' + (feature.properties['END_LAT'] !== null ? autolinker.link(feature.properties['END_LAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>END_LON</strong><br />' + (feature.properties['END_LON'] !== null ? autolinker.link(feature.properties['END_LON'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>ACCIDENT_N</strong><br />' + (feature.properties['ACCIDENT_N'] !== null ? autolinker.link(feature.properties['ACCIDENT_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>FATALITY_N</strong><br />' + (feature.properties['FATALITY_N'] !== null ? autolinker.link(feature.properties['FATALITY_N'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>INJURY_Nos</strong><br />' + (feature.properties['INJURY_Nos'] !== null ? autolinker.link(feature.properties['INJURY_Nos'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ALAPPUZHA_15_0(feature) {
+            switch(String(feature.properties['GRADING'])) {
+                case 'HIGH RISK':
+                    return {
+                pane: 'pane_ALAPPUZHA_15',
+                opacity: 1,
+                color: 'rgba(243,13,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'LOW RISK':
+                    return {
+                pane: 'pane_ALAPPUZHA_15',
+                opacity: 1,
+                color: 'rgba(253,221,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'MODERATE RISK':
+                    return {
+                pane: 'pane_ALAPPUZHA_15',
+                opacity: 1,
+                color: 'rgba(253,151,7,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_ALAPPUZHA_15',
+                opacity: 1,
+                color: 'rgba(83,202,204,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ALAPPUZHA_15');
+        map.getPane('pane_ALAPPUZHA_15').style.zIndex = 415;
+        map.getPane('pane_ALAPPUZHA_15').style['mix-blend-mode'] = 'normal';
+        var layer_ALAPPUZHA_15 = new L.geoJson(json_ALAPPUZHA_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_ALAPPUZHA_15',
+            layerName: 'layer_ALAPPUZHA_15',
+            pane: 'pane_ALAPPUZHA_15',
+            onEachFeature: pop_ALAPPUZHA_15,
+            style: style_ALAPPUZHA_15_0,
+        });
+        bounds_group.addLayer(layer_ALAPPUZHA_15);
+        map.addLayer(layer_ALAPPUZHA_15);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'ALAPPUZHA<br /><table><tr><td style="text-align: center;"><img src="legend/ALAPPUZHA_15_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ALAPPUZHA_15_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ALAPPUZHA_15_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ALAPPUZHA_15_3.png" /></td><td></td></tr></table>': layer_ALAPPUZHA_15,'ERANAKULAM<br /><table><tr><td style="text-align: center;"><img src="legend/ERANAKULAM_14_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ERANAKULAM_14_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ERANAKULAM_14_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/ERANAKULAM_14_3.png" /></td><td></td></tr></table>': layer_ERANAKULAM_14,'IDUKKI<br /><table><tr><td style="text-align: center;"><img src="legend/IDUKKI_13_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/IDUKKI_13_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/IDUKKI_13_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/IDUKKI_13_3.png" /></td><td></td></tr></table>': layer_IDUKKI_13,'PATHANAMTHITTA<br /><table><tr><td style="text-align: center;"><img src="legend/PATHANAMTHITTA_12_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PATHANAMTHITTA_12_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PATHANAMTHITTA_12_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PATHANAMTHITTA_12_3.png" /></td><td></td></tr></table>': layer_PATHANAMTHITTA_12,'KANNUR<br /><table><tr><td style="text-align: center;"><img src="legend/KANNUR_11_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KANNUR_11_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KANNUR_11_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KANNUR_11_3.png" /></td><td></td></tr></table>': layer_KANNUR_11,'KASARAGODE<br /><table><tr><td style="text-align: center;"><img src="legend/KASARAGODE_10_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KASARAGODE_10_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KASARAGODE_10_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KASARAGODE_10_3.png" /></td><td></td></tr></table>': layer_KASARAGODE_10,'KOLLAM<br /><table><tr><td style="text-align: center;"><img src="legend/KOLLAM_9_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOLLAM_9_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOLLAM_9_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOLLAM_9_3.png" /></td><td></td></tr></table>': layer_KOLLAM_9,'KOTTAYAM<br /><table><tr><td style="text-align: center;"><img src="legend/KOTTAYAM_8_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOTTAYAM_8_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOTTAYAM_8_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOTTAYAM_8_3.png" /></td><td></td></tr></table>': layer_KOTTAYAM_8,'KOZHIKODE<br /><table><tr><td style="text-align: center;"><img src="legend/KOZHIKODE_7_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOZHIKODE_7_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOZHIKODE_7_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/KOZHIKODE_7_3.png" /></td><td></td></tr></table>': layer_KOZHIKODE_7,'MALAPPURAM<br /><table><tr><td style="text-align: center;"><img src="legend/MALAPPURAM_6_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/MALAPPURAM_6_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/MALAPPURAM_6_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/MALAPPURAM_6_3.png" /></td><td></td></tr></table>': layer_MALAPPURAM_6,'THRISSUR<br /><table><tr><td style="text-align: center;"><img src="legend/THRISSUR_5_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/THRISSUR_5_HighRisk1.png" /></td><td>High Risk</td></tr><tr><td style="text-align: center;"><img src="legend/THRISSUR_5_LowRisk2.png" /></td><td>Low Risk</td></tr><tr><td style="text-align: center;"><img src="legend/THRISSUR_5_MediumRisk3.png" /></td><td>Medium Risk</td></tr></table>': layer_THRISSUR_5,'PALAKKAD<br /><table><tr><td style="text-align: center;"><img src="legend/PALAKKAD_4_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PALAKKAD_4_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PALAKKAD_4_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/PALAKKAD_4_3.png" /></td><td></td></tr></table>': layer_PALAKKAD_4,'WAYANAD<br /><table><tr><td style="text-align: center;"><img src="legend/WAYANAD_3_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/WAYANAD_3_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/WAYANAD_3_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/WAYANAD_3_3.png" /></td><td></td></tr></table>': layer_WAYANAD_3,'TRIVANDRUM<br /><table><tr><td style="text-align: center;"><img src="legend/TRIVANDRUM_2_HIGHRISK0.png" /></td><td>HIGH RISK</td></tr><tr><td style="text-align: center;"><img src="legend/TRIVANDRUM_2_LOWRISK1.png" /></td><td>LOW RISK</td></tr><tr><td style="text-align: center;"><img src="legend/TRIVANDRUM_2_MODERATERISK2.png" /></td><td>MODERATE RISK</td></tr><tr><td style="text-align: center;"><img src="legend/TRIVANDRUM_2_3.png" /></td><td></td></tr></table>': layer_TRIVANDRUM_2,"OpenStreetMap": layer_OpenStreetMap_1,"Google Hybrid": layer_GoogleHybrid_0,}).addTo(map);
+        setBounds();
         </script>
     </body>
 </html>
